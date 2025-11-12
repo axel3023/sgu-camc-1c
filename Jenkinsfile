@@ -1,18 +1,22 @@
 pipeline {
     agent any
+    environment {
+        COMPOSE_PROJECT_NAME = 'sgu-camc-10c' 
+    }
 
     stages {
         stage('Parando los servicios...') {
             steps {
-                bat '''
-                    docker compose -p ${env.COMPOSE_PROJECT_NAME} down --volumes || exit /b 0
-                '''
+                bat """
+                    rem Le quitamos --volumes para no borrar el volumen externo
+                    docker compose -p ${env.COMPOSE_PROJECT_NAME} down || exit /b 0
+                """
             }
         }
 
         stage('Eliminando imágenes anteriores...') {
             steps {
-                bat '''
+                bat """
                     for /f "tokens=*" %%i in ('docker images --filter "label=com.docker.compose.project=${env.COMPOSE_PROJECT_NAME}" -q') do (
                         docker rmi -f %%i
                     )
@@ -21,7 +25,7 @@ pipeline {
                     ) else (
                         echo Imagenes eliminadas correctamente
                     )
-                '''
+                """
             }
         }
 
@@ -31,12 +35,11 @@ pipeline {
             }
         }
 
-        // Construir y levantar los servicios (usa el nombre de tu proyecto)
         stage('Construyendo y desplegando servicios...') {
             steps {
-                bat '''
+                bat """
                     docker compose -p ${env.COMPOSE_PROJECT_NAME} up --build -d
-                '''
+                """
             }
         }
     }
@@ -45,11 +48,9 @@ pipeline {
         success {
             echo 'Pipeline ejecutado con éxito'
         }
-
         failure {
             echo 'Hubo un error al ejecutar el pipeline'
         }
-
         always {
             echo 'Pipeline finalizado'
         }
