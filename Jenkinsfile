@@ -1,5 +1,6 @@
 pipeline {
     agent any
+
     environment {
         COMPOSE_PROJECT_NAME = 'sgu-camc-10c' 
     }
@@ -38,7 +39,11 @@ pipeline {
         stage('Construyendo y desplegando servicios...') {
             steps {
                 bat """
-                    docker compose -p ${env.COMPOSE_PROJECT_NAME} up --build -d
+                    rem --- INICIO DE LA CORRECCIÓN ---
+                    rem Añadimos --wait para que Jenkins espere
+                    rem hasta que el healthcheck de la BD y el backend estén listos.
+                    docker compose -p ${env.COMPOSE_PROJECT_NAME} up --build -d --wait
+                    rem --- FIN DE LA CORRECCIÓN ---
                 """
             }
         }
