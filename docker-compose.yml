@@ -31,8 +31,13 @@ services:
       - database
 
   frontend:
-    build: ./frontend
     image: client:1.0-sgu
+    build:
+      context: ./frontend
+      args:
+        API_HOST: localhost
+        API_PORT: 8081
+        API_BASE: /sgu-api
     container_name: sgu-frontend
     ports:
       - "3000:80"
@@ -43,7 +48,8 @@ services:
 
 networks:
   sgu-net:
-    driver: bridge
+    external: true
 
 volumes:
   sgu-volume:
+    external: true
