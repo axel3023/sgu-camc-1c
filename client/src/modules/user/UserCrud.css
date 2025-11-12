@@ -1,0 +1,142 @@
+/* Ubicación: frontend/src/modules/user/UserCrud.css */
+
+/* Estilos para el contenedor principal */
+.user-crud-container {
+  width: 100%;
+  max-width: 900px; /* Ancho máximo para legibilidad */
+  margin: 0 auto;
+  /* padding: 20px; quitamos padding para que no se doble */
+  font-family: Arial, sans-serif;
+  color: #333;
+}
+
+/* Estilos para el formulario */
+.crud-form {
+  background: #ffffff;
+  border: 1px solid #e0e0e0;
+  border-radius: 8px;
+  padding: 24px;
+  margin-bottom: 30px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+  text-align: left;
+}
+
+.crud-form h2 {
+  margin-top: 0;
+  margin-bottom: 20px;
+  font-size: 1.5rem;
+  color: #2c3e50;
+  text-align: center;
+}
+
+.form-input-group {
+  margin-bottom: 15px;
+}
+
+.form-input-group label {
+  display: block;
+  margin-bottom: 5px;
+  font-weight: 600;
+  font-size: 0.9rem;
+}
+
+.form-input-group input {
+  width: 100%;
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  box-sizing: border-box; 
+  font-size: 1rem;
+}
+
+.form-actions {
+  margin-top: 20px;
+  display: flex;
+  gap: 10px; 
+  justify-content: center;
+}
+
+
+.btn {
+  padding: 10px 15px;
+  border: none;
+  border-radius: 4px;
+  font-size: 1rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background-color 0.2s ease, transform 0.1s ease;
+}
+
+.btn:hover {
+  opacity: 0.9;
+}
+
+.btn:active {
+  transform: scale(0.98);
+}
+
+.btn-primary {
+  background-color: #3498db; 
+  color: white;
+}
+
+.btn-secondary {
+  background-color: #95a5a6; 
+  color: white;
+}
+
+
+.table-wrapper {
+  overflow-x: auto; 
+  background: #ffffff;
+  border: 1px solid #e0e0e0;
+  border-radius: 8px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+}
+
+.crud-table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 0; 
+}
+
+.crud-table th,
+.crud-table td {
+  border-bottom: 1px solid #ddd;
+  padding: 12px 15px;
+  text-align: left;
+  vertical-align: middle;
+}
+
+.crud-table th {
+  background-color: #f2f6f8; 
+  font-weight: 600;
+}
+
+.crud-table tr:nth-child(even) {
+  background-color: #fdfdfd;
+}
+
+.crud-table tr:last-child td {
+  border-bottom: none;
+}
+
+.crud-table tr:hover {
+  background-color: #f1f1f1;
+}
+
+.actions-cell {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
+.btn-edit {
+  background-color: #f39c12; 
+  color: white;
+}
+
+.btn-delete {
+  background-color: #e74c3c; 
+  color: white;
+}
