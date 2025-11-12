@@ -3,7 +3,7 @@ services:
     image: mysql:8
     container_name: sgu-database
     environment:
-      MYSQL_ROOT_PASSWORD: root
+      MYSQL_ROOT_PASSWORD: admin
       MYSQL_DATABASE: sgu_db
     ports:
       - "3307:3306"
