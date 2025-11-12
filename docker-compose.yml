@@ -13,7 +13,7 @@ services:
       - sgu-volume:/var/lib/mysql
 
   backend:
-    build: ./backend
+    build: ./server
     image: server:1.0-sgu
     container_name: sgu-backend
     ports:
@@ -33,7 +33,7 @@ services:
   frontend:
     image: client:1.0-sgu
     build:
-      context: ./frontend
+      context: ./client
       args:
         API_HOST: localhost
         API_PORT: 8081
